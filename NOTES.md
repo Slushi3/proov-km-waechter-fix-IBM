@@ -1,5 +1,6 @@
 # What I checked, and what the agent got wrong
 
+## What the agent got wrong
 The agent fixed the wear bug (`//` floor division made every car under the service
 interval show 0% wear), but I found problems in how it handled the edge cases:
 - Cars with no `last_service_km` now default to the odometer reading, which makes
@@ -12,9 +13,6 @@ interval show 0% wear), but I found problems in how it handled the edge cases:
 - It called `get_setting` a "dead wrapper" while also keeping it so callers don't
   break, which is contradictory. 
 - It declared several functions "never called" without showing a search.
-
-## What the agent got wrong
-(Every agent gets something wrong on a job this size. What did you catch? How did you notice?)
 
 ## What I checked before I accepted its work
 - - I ran the tests: 4/4 pass, including the almost-due-car and missing-reading cases.
